@@ -1,8 +1,8 @@
 
 
-const posts = document.querySelectorAll('.gallery-item');
+const postes = document.querySelectorAll('.gallery-item');
 
-posts.forEach(post => {
+postes.forEach(post => {
 	post.addEventListener('click', () => {
 		//Get original image URL
 		const imgUrl = post.firstElementChild.src.split("?")[0];

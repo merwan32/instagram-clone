@@ -1,4 +1,4 @@
-// Elements
+
 const toggleThemeBtn = document.querySelector('.header__theme-button');
 const storiesContent = document.querySelector('.stories__content');
 const storiesLeftButton = document.querySelector('.stories__left-button');
@@ -13,8 +13,10 @@ document.onload = setInitialTheme(localStorage.getItem('theme'));
 function setInitialTheme(themeKey) {
   if (themeKey === 'dark') {
     document.documentElement.classList.add('darkTheme');
+    console.log('is darrk')
   } else {
     document.documentElement.classList.remove('darkTheme');
+    console.log('is light')
   }
 }
 

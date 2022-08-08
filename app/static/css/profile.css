@@ -13,7 +13,34 @@ Flexbox and floats are used as a fallback so that browsers which don't support g
 :root {
     font-size: 10px;
 }
-
+:root {
+    --primary: hsl(0, 0%, 100%);
+    --secondary: hsl(0, 0%, 98%);
+    --border: hsl(0, 0%, 86%);
+  
+    --story-border: hsl(0, 0%, 78%);
+    --img-border: hsla(0, 0%, 0%, 0.1);
+  
+    --text-dark: hsl(0, 0%, 15%);
+    --text-light: hsl(0, 0%, 60%);
+  
+    --like: hsl(355, 82%, 61%);
+    --link: hsl(204, 100%, 48%);
+  
+    --header-height: 44px;
+    --nav-height: 44px;
+  }
+:root.darkTheme {
+    --primary: hsl(0, 0%, 0%);
+    --secondary: hsl(0, 0%, 2%);
+    --border: hsl(0, 0%, 15%);
+  
+    --story-border: hsl(0, 0%, 44%);
+    --img-border: hsla(0, 0%, 100%, 0.1);
+  
+    --text-dark: hsl(0, 0%, 98%);
+    --text-light: hsl(0, 0%, 60%);
+  }
 *,
 *::before,
 *::after {
@@ -23,8 +50,8 @@ Flexbox and floats are used as a fallback so that browsers which don't support g
 body {
     font-family: "Open Sans", Arial, sans-serif;
     min-height: 100vh;
-    background-color: #fafafa;
-    color: #262626;
+    background-color: var(--primary);
+    color: var(--text-dark);
     padding-bottom: 3rem;
 }
 
@@ -48,9 +75,7 @@ img {
     cursor: pointer;
 }
 
-.btn:focus {
-    outline: 0.5rem auto #4d90fe;
-}
+
 
 .visually-hidden {
     position: absolute !important;
@@ -64,6 +89,7 @@ img {
 
 .profile {
     padding: 5rem 0;
+    margin-top: 50px;
 }
 
 .profile::after {
@@ -207,17 +233,7 @@ img {
     object-fit: cover;
 }
 
-/* Loader */
 
-.loader {
-    width: 5rem;
-    height: 5rem;
-    border: 0.6rem solid #999;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    margin: 0 auto;
-    animation: loader 500ms linear infinite;
-}
 
 /* Media Query */
 

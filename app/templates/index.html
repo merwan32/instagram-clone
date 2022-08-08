@@ -14,7 +14,7 @@
     <header class="header">
       <nav class="header__content">
         <div class="header__buttons">
-          <a href="index.html" class="header__home">
+          <a href="{% url 'index' %}" class="header__home">
             <svg
               width="104"
               height="30"
@@ -249,7 +249,7 @@
           <a href="{% url 'profile' %}" class="profile-button">
             <div class="profile-button__border"></div>
             <div class="profile-button__picture">
-              <img src=" {% static 'images/default-user.png' %}" alt="User Picture" />
+              <img src=" {% static 'images/profilePic.jpg' %}" alt="User Picture" />
             </div>
           </a>
         </div>
@@ -1324,17 +1324,17 @@
         <section class="side-menu">
           <div class="side-menu__user-profile">
             <a
-              href="https://github.com/leocosta1"
-              target="_blank"
+              href="{% url 'profile' %}"
+              
               class="side-menu__user-avatar"
             >
-              <img src=" {% static 'images/default-user.png' %}" alt="User Picture" />
+              <img src=" {% static 'images/profilePic.jpg' %}" alt="User Picture" />
             </a>
             <div class="side-menu__user-info">
-              <a href="https://github.com/leocosta1" target="_blank"
-                >leocosta1</a
+              <a href="{% url 'profile' %}" 
+                >bk__mrwan</a
               >
-              <span>Leonardo Costa</span>
+              <span>Mër Wâñ</span>
             </div>
             <button class="side-menu__user-button">Switch</button>
           </div>
@@ -1546,12 +1546,12 @@
           />
         </svg>
       </a>
-      <button class="navbar__button profile-button">
+      <a href="{% url 'profile' %}" class="navbar__button profile-button">
         <div class="profile-button__border"></div>
         <div class="profile-button__picture">
-          <img src=" {% static 'images/default-user.png' %}" alt="User Picture" />
+          <img src=" {% static 'images/profilePic.jpg' %}" alt="User Picture" />
         </div>
-      </button>
+      </a>
     </nav>
   </body>
 </html>
