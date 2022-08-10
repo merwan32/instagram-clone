@@ -123,6 +123,7 @@ img {
     display: inline-block;
     font-size: 3.2rem;
     font-weight: 300;
+    margin-right: 20px;
 }
 
 .profile-edit-btn {
@@ -327,12 +328,16 @@ Remove or comment-out the code block below to see how the browser will fall-back
 @supports (display: grid) {
     .profile {
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 1fr 2fr;
         grid-template-rows: repeat(3, auto);
-        grid-column-gap: 3rem;
         align-items: center;
+        margin: 20px 0;
+        padding: 10px 0;
+        background: #efefef7a;
     }
-
+    .settings .profile{
+        grid-template-columns: 1fr 2fr 1fr;
+    }
     .profile-image {
         grid-row: 1 / -1;
     }
@@ -401,4 +406,5 @@ Remove or comment-out the code block below to see how the browser will fall-back
     color: #fff;
     cursor: pointer;
     border-radius: 5px;
+    width: 80px;
 }

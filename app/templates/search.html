@@ -237,7 +237,7 @@
 </header>
 
 	<div class="container settings">
-    {% for profile in profiles %}
+    {% for p in prof1 %}
     <div class="profile">
 
 			<div class="profile-image">
@@ -247,22 +247,58 @@
 			</div>
             <div>
 			<div class="profile-user-settings">
-				<h1 class="profile-user-name">{{profile.user.username}}</h1>
+				<h1 class="profile-user-name">{{p.user.username}}</h1>
 			</div>
 
 			<div class="profile-stats">
 
 				<ul>
 					<li><span class="profile-stat-count">0</span> posts</li>
-					<li><span class="profile-stat-count">{{profile.followers.count}}</span> followers</li>
-					<li><span class="profile-stat-count">{{profile.followings.count}}</span> following</li>
+					<li><span class="profile-stat-count">{{p.followers.count}}</span> followers</li>
+					<li><span class="profile-stat-count">{{p.followings.count}}</span> following</li>
 				</ul>
 
 			</div>
 
 			<div class="profile-bio">
 
-				<p><span class="profile-real-name">{{profile.user.first_name}} {{profile.user.last_name}}</span> <br>
+				<p><span class="profile-real-name">{{p.user.first_name}} {{p.user.last_name}}</span> <br>
+				Bougtob 💫 Algeria 🇩🇿 <br>
+				Esi student 💻<br>
+				Web développer 🌐</p>
+
+			</div>
+            </div>
+            <div class="follow"></div>   
+
+		</div>
+    {% endfor %}
+		{% for p in prof2 %}
+    <div class="profile">
+
+			<div class="profile-image">
+
+				<img src="{{profile.profile_picture.url}}" alt="">
+
+			</div>
+            <div>
+			<div class="profile-user-settings">
+				<h1 class="profile-user-name">{{p.user.username}}</h1>
+			</div>
+
+			<div class="profile-stats">
+
+				<ul>
+					<li><span class="profile-stat-count">0</span> posts</li>
+					<li><span class="profile-stat-count">{{p.followers.count}}</span> followers</li>
+					<li><span class="profile-stat-count">{{p.followings.count}}</span> following</li>
+				</ul>
+
+			</div>
+
+			<div class="profile-bio">
+
+				<p><span class="profile-real-name">{{p.user.first_name}} {{p.user.last_name}}</span> <br>
 				Bougtob 💫 Algeria 🇩🇿 <br>
 				Esi student 💻<br>
 				Web développer 🌐</p>
@@ -270,12 +306,49 @@
 			</div>
             </div>
             <div class="follow">
-                <button>follow</button>
-            </div>
+              <a href="/follow/{{p.id}}/{{username}}"><button>unfollow</button></a>
+             </div>   
 
 		</div>
     {% endfor %}
-		
+    {% for p in prof3 %}
+    <div class="profile">
+
+			<div class="profile-image">
+
+				<img src="{{profile.profile_picture.url}}" alt="">
+
+			</div>
+            <div>
+			<div class="profile-user-settings">
+				<h1 class="profile-user-name">{{p.user.username}}</h1>
+			</div>
+
+			<div class="profile-stats">
+
+				<ul>
+					<li><span class="profile-stat-count">0</span> posts</li>
+					<li><span class="profile-stat-count">{{p.followers.count}}</span> followers</li>
+					<li><span class="profile-stat-count">{{p.followings.count}}</span> following</li>
+				</ul>
+
+			</div>
+
+			<div class="profile-bio">
+
+				<p><span class="profile-real-name">{{p.user.first_name}} {{p.user.last_name}}</span> <br>
+				Bougtob 💫 Algeria 🇩🇿 <br>
+				Esi student 💻<br>
+				Web développer 🌐</p>
+
+			</div>
+            </div>
+            <div class="follow">
+              <a href="/follow/{{p.id}}/{{username}}"><button>follow</button></a>
+             </div>   
+
+		</div>
+    {% endfor %}
 		<!-- End of profile section -->
 
 	</div>
