@@ -249,7 +249,7 @@
           <a href="{% url 'profile' %}" class="profile-button">
             <div class="profile-button__border"></div>
             <div class="profile-button__picture">
-              <img src=" {% static 'images/profilePic.jpg' %}" alt="User Picture" />
+              <img src="{{profile.profile_picture.url}}" alt="User Picture" />
             </div>
           </a>
         </div>
@@ -1328,13 +1328,13 @@
               
               class="side-menu__user-avatar"
             >
-              <img src=" {% static 'images/profilePic.jpg' %}" alt="User Picture" />
+              <img src="{{profile.profile_picture.url}}" alt="User Picture" />
             </a>
             <div class="side-menu__user-info">
               <a href="{% url 'profile' %}" 
-                >bk__mrwan</a
+                >{{profile.user.username}}</a
               >
-              <span>Mër Wâñ</span>
+              <span>{{profile.user.first_name}} {{profile.user.last_name}}</span>
             </div>
             <button class="side-menu__user-button">Switch</button>
           </div>
