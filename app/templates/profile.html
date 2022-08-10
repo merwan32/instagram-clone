@@ -226,7 +226,7 @@
           <a href="{% url 'profile' %}" class="profile-button">
             <div class="profile-button__border"></div>
             <div class="profile-button__picture">
-              <img src=" {% static 'images/profilePic.jpg' %}" alt="User Picture" />
+              <img src=" {{profile.profile_picture.url}}" alt="User Picture" />
             </div>
           </a>
         </div>
@@ -239,13 +239,13 @@
 
 			<div class="profile-image">
 
-				<img src="{% static 'images/profilePic.jpg' %}" alt="">
+				<img src="{{profile.profile_picture.url}}" alt="">
 
 			</div>
 
 			<div class="profile-user-settings">
 
-				<h1 class="profile-user-name">bk__mrwan</h1>
+				<h1 class="profile-user-name">{{profile.user.username}}</h1>
 
 				<button class="btn profile-edit-btn">Edit Profile</button>
 
@@ -257,15 +257,15 @@
 
 				<ul>
 					<li><span class="profile-stat-count">0</span> posts</li>
-					<li><span class="profile-stat-count">119</span> followers</li>
-					<li><span class="profile-stat-count">152</span> following</li>
+					<li><span class="profile-stat-count">{{profile.followers.count}}</span> followers</li>
+					<li><span class="profile-stat-count">{{profile.followings.count}}</span> following</li>
 				</ul>
 
 			</div>
 
 			<div class="profile-bio">
 
-				<p><span class="profile-real-name">Mër Wâñ</span> <br>
+				<p><span class="profile-real-name">{{profile.user.first_name}} {{profile.user.last_name}}</span> <br>
 				Bougtob 💫 Algeria 🇩🇿 <br>
 				Esi student 💻<br>
 				Web développer 🌐</p>

@@ -6,10 +6,12 @@ from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 
 def index(request):
-    return render(request,'index.html')
+    profile = Profile.objects.get(user=request.user)
+    return render(request,'index.html',{'profile':profile})
 
 def profile(request):
-    return render(request,'profile.html')
+    profile = Profile.objects.get(user=request.user)
+    return render(request,'profile.html',{'profile':profile})
 
 def signup(request):
     if request.method == 'POST':
