@@ -13,6 +13,11 @@ def profile(request):
     profile = Profile.objects.get(user=request.user)
     return render(request,'profile.html',{'profile':profile})
 
+def search(request):
+    profile = Profile.objects.get(user=request.user)
+    search = request.GET['username']
+    profiles = Profile.objects.filter(user__username__icontains=search)
+    return render(request,'search.html',{'profile':profile,'profiles':profiles})
 def signup(request):
     if request.method == 'POST':
         username = request.POST['username']

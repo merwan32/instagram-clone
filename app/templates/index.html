@@ -60,7 +60,8 @@
         </div>
 
         <div class="header__search">
-          <input type="text" placeholder="Search" />
+        <form action="/search" method="GET">
+          <input type="text" placeholder="Search" name="username"/>
           <svg
             width="24"
             height="24"
@@ -78,6 +79,8 @@
               stroke-linejoin="round"
             />
           </svg>
+          <button type="submit">
+          </form>
         </div>
 
         <div class="header__buttons header__buttons--mobile">
