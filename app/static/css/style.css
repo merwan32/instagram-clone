@@ -132,6 +132,13 @@ img {
   align-items: center;
   position: relative;
 }
+.header__search form{
+  display: flex;
+    align-items: center;
+}
+.header__search form button{
+  display: none;
+}
 .header__search svg {
   width: 12px;
   height: 12px;
@@ -882,4 +889,7 @@ img {
   .side-menu {
     display: flex;
   }
+}
+.settings .profile img{
+  max-width: 150px;
 }
