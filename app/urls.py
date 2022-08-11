@@ -8,6 +8,7 @@ urlpatterns=[
     path('search/',views.search,name="search"),
     path('follow/<int:id>/<str:username>/',views.follow,name="follow"),
     path('uploadpost/',views.upload_post,name="upload_post"),
+    path('like/<int:id>/',views.like,name="like"),
     
     path('signup/',views.signup,name="signup"),
     path('signin/',views.signin,name="signin"),

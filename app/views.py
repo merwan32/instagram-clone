@@ -3,11 +3,13 @@ from .models import Profile,Post
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from django.db.models import Q
 # Create your views here.
 
 def index(request):
     profile = Profile.objects.get(user=request.user)
-    return render(request,'index.html',{'profile':profile})
+    posts = Post.objects.filter(Q(profile__followers=request.user) & ~Q(likes=request.user) | Q(user=request.user) & ~Q(likes=request.user))
+    return render(request,'index.html',{'profile':profile,'posts':posts})
 
 def profile(request):
     profile = Profile.objects.get(user=request.user)
@@ -39,6 +41,16 @@ def upload_post(request):
         posts = Post.objects.create(user=request.user,profile=profile,image=post)
         return render(request,'profile.html',{'profile':profile})
     return render(request,'add/post.html',{'profile':profile})
+
+def like(request,id):
+    post = Post.objects.filter(id=id)
+    if request.user in post[0].likes.all():
+        post[0].likes.remove(request.user)
+    else:
+        post[0].likes.add(request.user)
+    return redirect('index')
+
+
 
 def signup(request):
     if request.method == 'POST':
