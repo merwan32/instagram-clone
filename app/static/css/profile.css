@@ -64,6 +64,25 @@ img {
     margin: 50px auto 0;
     padding: 5rem 2rem;
 }
+.container form{
+    width: 400px;
+    background: var(--border);
+    border-radius: 15px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.container form img{
+    width: 80%;
+}
+.container form input{
+    background: var(--primary);
+    color: var(--text-dark);
+    padding: 5px 15px;
+    border-radius: 10px;
+}
 
 .btn {
     display: inline-block;
@@ -106,6 +125,7 @@ img {
 
 .profile-image img {
     border-radius: 50%;
+    margin-right: 40px;
 }
 
 .profile-user-settings,
@@ -184,6 +204,7 @@ img {
     margin: 1rem;
     color: #fff;
     cursor: pointer;
+    max-width: 300px;
 }
 
 .gallery-item:hover .gallery-item-info,
@@ -333,7 +354,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
         align-items: center;
         margin: 20px 0;
         padding: 10px 0;
-        background: #efefef7a;
+        border-radius: 10px;
     }
     .settings .profile{
         grid-template-columns: 1fr 2fr 1fr;

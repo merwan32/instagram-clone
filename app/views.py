@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Profile
+from .models import Profile,Post
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
@@ -11,21 +11,15 @@ def index(request):
 
 def profile(request):
     profile = Profile.objects.get(user=request.user)
-    return render(request,'profile.html',{'profile':profile})
+    posts = Post.objects.filter(user=request.user)
+    return render(request,'profile.html',{'profile':profile,'posts':posts})
 
 def search(request):
     profile = Profile.objects.get(user=request.user)
     search = request.GET['username']
     profiles = Profile.objects.filter(user__username__icontains=search)
-    prof1,prof2,prof3 = set(),set(),set()
-    for p in profiles:
-        if p.user == request.user :
-            prof1.add(p)
-        elif request.user in p.followers.all():
-            prof2.add(p)
-        else:
-            prof3.add(p)
-    return render(request,'search.html',{'profile':profile,'prof1':prof1,'prof2':prof2,'prof3':prof3,"username":search})
+    
+    return render(request,'search.html',{'profile':profile,'profiles':profiles,"username":search})
 
 def follow(request,id,username):
     profile = Profile.objects.get(id=id)
@@ -38,6 +32,13 @@ def follow(request,id,username):
         login_profile.followings.add(profile.user)
     return redirect(f'/search?username={username}')
 
+def upload_post(request):
+    profile = Profile.objects.get(user=request.user)
+    if request.method == "POST":
+        post = request.FILES['img']
+        posts = Post.objects.create(user=request.user,profile=profile,image=post)
+        return render(request,'profile.html',{'profile':profile})
+    return render(request,'add/post.html',{'profile':profile})
 
 def signup(request):
     if request.method == 'POST':
