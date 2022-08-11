@@ -7,6 +7,7 @@ urlpatterns=[
     path('profile/',views.profile,name="profile"),
     path('search/',views.search,name="search"),
     path('follow/<int:id>/<str:username>/',views.follow,name="follow"),
+    path('uploadpost/',views.upload_post,name="upload_post"),
     
     path('signup/',views.signup,name="signup"),
     path('signin/',views.signin,name="signin"),

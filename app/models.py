@@ -6,3 +6,9 @@ class Profile(models.Model):
     followers = models.ManyToManyField(User,related_name="followers",blank=True)
     followings = models.ManyToManyField(User,related_name="followings",blank=True)
     profile_picture = models.ImageField(upload_to='profilepics',default='profilepics/default-user.png')
+
+class Post(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='posts')
+    likes = models.ManyToManyField(User,related_name="likes")
