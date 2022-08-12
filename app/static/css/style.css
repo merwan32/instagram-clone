@@ -128,7 +128,7 @@ img {
   width: 216px;
   height: 28px;
 
-  display: none;
+  display: flex;
   align-items: center;
   position: relative;
 }
@@ -864,9 +864,6 @@ img {
     padding: 0 20px;
   }
 
-  .header__search {
-    display: flex;
-  }
 
   .header__buttons--mobile {
     display: none;

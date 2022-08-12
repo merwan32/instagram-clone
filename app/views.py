@@ -1,13 +1,21 @@
 from django.shortcuts import render,redirect
-from .models import Profile,Post
+from .models import Profile,Post,Reel
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from django.db.models import Q
 # Create your views here.
 
 def index(request):
     profile = Profile.objects.get(user=request.user)
-    return render(request,'index.html',{'profile':profile})
+    posts = Post.objects.filter(Q(profile__followers=request.user) & ~Q(likes=request.user) | Q(user=request.user) & ~Q(likes=request.user))
+    return render(request,'index.html',{'profile':profile,'posts':posts})
+
+def reels(request):
+    profile = Profile.objects.get(user=request.user)
+    reels = Reel.objects.all()
+    return render(request,'reel.html',{'profile':profile,'reels':reels})
+
 
 def profile(request):
     profile = Profile.objects.get(user=request.user)
@@ -16,10 +24,12 @@ def profile(request):
 
 def search(request):
     profile = Profile.objects.get(user=request.user)
-    search = request.GET['username']
+    search = request.GET['username'] 
     profiles = Profile.objects.filter(user__username__icontains=search)
     
     return render(request,'search.html',{'profile':profile,'profiles':profiles,"username":search})
+
+
 
 def follow(request,id,username):
     profile = Profile.objects.get(id=id)
@@ -39,6 +49,26 @@ def upload_post(request):
         posts = Post.objects.create(user=request.user,profile=profile,image=post)
         return render(request,'profile.html',{'profile':profile})
     return render(request,'add/post.html',{'profile':profile})
+
+
+def upload_reel(request):
+    profile = Profile.objects.get(user=request.user)
+    if request.method == "POST":
+        reel = request.FILES['reel']
+        reels = Reel.objects.create(profile=profile,reel=reel)
+        return render(request,'profile.html',{'profile':profile})
+    return render(request,'add/reel.html',{'profile':profile})
+
+    
+def like(request,id):
+    post = Post.objects.filter(id=id)
+    if request.user in post[0].likes.all():
+        post[0].likes.remove(request.user)
+    else:
+        post[0].likes.add(request.user)
+    return redirect('index')
+
+
 
 def signup(request):
     if request.method == 'POST':
