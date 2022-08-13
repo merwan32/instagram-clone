@@ -18,3 +18,8 @@ class Reel(models.Model):
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     reel = models.FileField(upload_to='reels')
     likes = models.ManyToManyField(User,blank=True)
+
+
+class Story(models.Model):
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    story = models.FileField(upload_to='story')

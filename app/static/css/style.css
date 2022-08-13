@@ -217,6 +217,7 @@ img {
   margin-bottom: var(--nav-height);
 
   display: flex;
+  flex-direction: column;
   flex: 1;
 }
 
@@ -324,7 +325,25 @@ img {
   align-items: center;
   gap: 6px;
 }
-
+.story .storyimg{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background: var(--primary);
+    z-index: 100;
+    display: none;
+    justify-content: center;
+    align-content: center;
+}
+.story .storyimg .time{
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, hsl(355, 82%, 61%), hsl(328, 76%, 53%));
+  position: fixed;
+  left: 0;
+}
 .story__avatar {
   position: relative;
 }
@@ -384,6 +403,7 @@ img {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin-top: 20px;
 }
 
 .post__header {
@@ -889,4 +909,8 @@ img {
 }
 .settings .profile img{
   max-width: 100px;
+}
+video{
+  height: 80vh;
+  width: auto;
 }
