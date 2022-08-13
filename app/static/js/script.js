@@ -171,3 +171,21 @@ postsContent.forEach((post) => {
     }
   }
 });
+
+
+
+function story(b) {
+  b.classList.remove('story--has-story')
+  story = b.getElementsByClassName('storyimg')
+  time = b.getElementsByClassName('time')
+  story[0].style.display ="flex"
+  i=0
+  setInterval(()=>{
+    i = i+1;
+    time[0].style.width =i+"%"
+    console.log(i)
+  }, 100);
+  setTimeout(()=>{
+    story[0].style.display ="none"
+  }, 10000);
+}

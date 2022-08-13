@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Profile,Post,Reel
+from .models import Profile,Post,Reel,Story
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
@@ -8,8 +8,9 @@ from django.db.models import Q
 
 def index(request):
     profile = Profile.objects.get(user=request.user)
+    story = Story.objects.filter(profile__followers=request.user)
     posts = Post.objects.filter(Q(profile__followers=request.user) & ~Q(likes=request.user) | Q(user=request.user) & ~Q(likes=request.user))
-    return render(request,'index.html',{'profile':profile,'posts':posts})
+    return render(request,'index.html',{'profile':profile,'posts':posts,'stories':story})
 
 def reels(request):
     profile = Profile.objects.get(user=request.user)
@@ -58,6 +59,14 @@ def upload_reel(request):
         reels = Reel.objects.create(profile=profile,reel=reel)
         return render(request,'profile.html',{'profile':profile})
     return render(request,'add/reel.html',{'profile':profile})
+
+def upload_story(request):
+    profile = Profile.objects.get(user=request.user)
+    if request.method == "POST":
+        story = request.FILES['story']
+        storys = Story.objects.create(profile=profile,story=story)
+        return render(request,'profile.html',{'profile':profile})
+    return render(request,'add/story.html',{'profile':profile})
 
     
 def like(request,id):
