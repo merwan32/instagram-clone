@@ -34,7 +34,7 @@ def edit(request):
         profile.bio = request.POST['bio']
         profile.user.save()
         profile.save()
-        return render(request,'profile.html',{'profile':profile,'posts':posts})
+        return redirect('profile')
     else:
         return render(request,'edit.html',{'profile':profile})
 
@@ -53,9 +53,16 @@ def change_picture(request):
         pic = request.FILES['img']
         profile.profile_picture  = pic
         profile.save()
-        return render(request,'profile.html',{'profile':profile,'posts':posts})
+        return redirect('profile')
     return render(request,'add/changepicture.html',{'profile':profile})
 
+def change_password(request):
+    profile = Profile.objects.get(user=request.user)
+    posts = Post.objects.filter(user=request.user)
+    if request.method == "POST":
+        if 
+        return redirect('profile')
+    return render(request,'add/changepicture.html',{'profile':profile})
 
 def follow(request,id,username):
     profile = Profile.objects.get(id=id)
