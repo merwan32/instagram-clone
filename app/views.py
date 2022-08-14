@@ -26,6 +26,7 @@ def profile(request):
 
 def edit(request):
     profile = Profile.objects.get(user=request.user)
+    posts = Post.objects.filter(user=request.user)
     if request.method == 'POST':
         profile.user.username = request.POST['username']
         profile.user.first_name = request.POST['firstname']
@@ -33,7 +34,7 @@ def edit(request):
         profile.bio = request.POST['bio']
         profile.user.save()
         profile.save()
-        return render(request,'profile.html',{'profile':profile})
+        return render(request,'profile.html',{'profile':profile,'posts':posts})
     else:
         return render(request,'edit.html',{'profile':profile})
 
@@ -45,6 +46,15 @@ def search(request):
     
     return render(request,'search.html',{'profile':profile,'profiles':profiles,"username":search})
 
+def change_picture(request):
+    profile = Profile.objects.get(user=request.user)
+    posts = Post.objects.filter(user=request.user)
+    if request.method == "POST":
+        pic = request.FILES['img']
+        profile.profile_picture  = pic
+        profile.save()
+        return render(request,'profile.html',{'profile':profile,'posts':posts})
+    return render(request,'add/changepicture.html',{'profile':profile})
 
 
 def follow(request,id,username):

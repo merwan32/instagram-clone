@@ -132,6 +132,7 @@ img {
 .profile-image img {
     border-radius: 50%;
     margin-right: 40px;
+    width: 100%;
 }
 
 .profile-user-settings,
@@ -294,7 +295,7 @@ img {
         display: none;
     }
 
-    .profile-image,
+    
     .profile-user-settings,
     .profile-bio,
     .profile-stats {
@@ -396,7 +397,9 @@ Remove or comment-out the code block below to see how the browser will fall-back
         grid-gap: 2rem;
     }
 
-    .profile-image,
+    .profile-image{
+        width: 300px;
+    }
     .profile-user-settings,
     .profile-stats,
     .profile-bio,
@@ -416,6 +419,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
         .profile-image {
             grid-row: 1 / 2;
+            width: 150px;
         }
 
         .profile-user-settings {
