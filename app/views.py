@@ -60,9 +60,13 @@ def change_password(request):
     profile = Profile.objects.get(user=request.user)
     posts = Post.objects.filter(user=request.user)
     if request.method == "POST":
-        if 
-        return redirect('profile')
-    return render(request,'add/changepicture.html',{'profile':profile})
+        if request.POST['password'] == request.POST['repassword']:
+            profile.user.set_password(request.POST['password'])
+            profile.user.save()
+            user = authenticate(username=profile.user.username,password=request.POST['password'])
+            login(request,user)
+            return redirect('profile')
+    return render(request,'add/changepassword.html',{'profile':profile})
 
 def follow(request,id,username):
     profile = Profile.objects.get(id=id)
