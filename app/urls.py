@@ -12,6 +12,7 @@ urlpatterns=[
     path('like/<int:id>/',views.like,name="like"),
     path('uploadreel/',views.upload_reel,name="upload_reel"),
     path('uploadstory/',views.upload_story,name="upload_story"),
+    path('edit/',views.edit,name="edit"),
     
     path('signup/',views.signup,name="signup"),
     path('signin/',views.signin,name="signin"),

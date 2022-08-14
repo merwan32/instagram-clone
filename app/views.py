@@ -23,6 +23,21 @@ def profile(request):
     posts = Post.objects.filter(user=request.user)
     return render(request,'profile.html',{'profile':profile,'posts':posts})
 
+
+def edit(request):
+    profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        profile.user.username = request.POST['username']
+        profile.user.first_name = request.POST['firstname']
+        profile.user.last_name = request.POST['lastname']
+        profile.bio = request.POST['bio']
+        profile.user.save()
+        profile.save()
+        return render(request,'profile.html',{'profile':profile})
+    else:
+        return render(request,'edit.html',{'profile':profile})
+
+
 def search(request):
     profile = Profile.objects.get(user=request.user)
     search = request.GET['username'] 

@@ -82,8 +82,14 @@ img {
     color: var(--text-dark);
     padding: 5px 15px;
     border-radius: 10px;
+    border: none;
+    width: 80%;
+    height: 45px;
 }
-
+.container form input[type="submit"]{
+    border:1px solid var(--text-dark);
+    width: auto;
+}
 .btn {
     display: inline-block;
     font: inherit;
@@ -158,6 +164,27 @@ img {
 .profile-settings-btn {
     font-size: 2rem;
     margin-left: 1rem;
+    position: relative;
+}
+.profile-settings-btn:hover .setting{
+    display: flex;
+}
+.profile-settings-btn .setting{
+    position: absolute;
+    width: 200px;
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 15px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.profile-settings-btn .setting a,
+.profile-user-settings a{
+    text-decoration: none;
+    color: var(--text-dark);
 }
 
 .profile-stats {
