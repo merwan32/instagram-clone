@@ -5,6 +5,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     followers = models.ManyToManyField(User,related_name="followers",blank=True)
     followings = models.ManyToManyField(User,related_name="followings",blank=True)
+    bio = models.CharField(max_length=500, blank=True)
     profile_picture = models.ImageField(upload_to='profilepics',default='profilepics/default-user.png')
 
 class Post(models.Model):

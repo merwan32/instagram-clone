@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	<div class="container">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <input type="text" name="username" value="{{profile.user.username}}" placeholder="Username">
+            <input type="text" name="firstname" value="{{profile.user.first_name}}" placeholder="Firstname">
+            <input type="text" name="lastname" value="{{profile.user.last_name}}" placeholder="Lastname">
+            <input type="text" name="bio" value="{{profile.bio}}" placeholder="Bio">
+            <input type="submit">
+        </form>
+	</div>
+
+{% endblock content %}
