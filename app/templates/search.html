@@ -19,7 +19,7 @@
 			<div class="profile-stats">
 
 				<ul>
-					<li><span class="profile-stat-count">0</span> posts</li>
+					<li><span class="profile-stat-count">{{post.count}}</span> posts</li>
 					<li><span class="profile-stat-count">{{p.followers.count}}</span> followers</li>
 					<li><span class="profile-stat-count">{{p.followings.count}}</span> following</li>
 				</ul>
@@ -29,9 +29,7 @@
 			<div class="profile-bio">
 
 				<p><span class="profile-real-name">{{p.user.first_name}} {{p.user.last_name}}</span> <br>
-				Bougtob 💫 Algeria 🇩🇿 <br>
-				Esi student 💻<br>
-				Web développer 🌐</p>
+				{{p.bio}}</p>
 
 			</div>
             </div>

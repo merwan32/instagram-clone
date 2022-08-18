@@ -43,7 +43,7 @@ def search(request):
     profile = Profile.objects.get(user=request.user)
     search = request.GET['username'] 
     profiles = Profile.objects.filter(user__username__icontains=search)
-    
+    posts = Post.objects.filter(user=request.user)
     return render(request,'search.html',{'profile':profile,'profiles':profiles,"username":search})
 
 def change_picture(request):
