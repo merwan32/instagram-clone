@@ -3,15 +3,19 @@ from .models import Profile,Post,Reel,Story
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 # Create your views here.
 
 def index(request):
-    profile = Profile.objects.get(user=request.user)
-    story = Story.objects.filter(profile__followers=request.user)
-    posts = Post.objects.filter(Q(profile__followers=request.user) & ~Q(likes=request.user) | Q(user=request.user) & ~Q(likes=request.user))
-    return render(request,'index.html',{'profile':profile,'posts':posts,'stories':story})
-
+    if request.user.is_authenticated: 
+        print(request.user)
+        profile = Profile.objects.get(user=request.user)
+        story = Story.objects.filter(profile__followers=request.user)
+        posts = Post.objects.filter(Q(profile__followers=request.user) & ~Q(likes=request.user) | Q(user=request.user) & ~Q(likes=request.user))
+        return render(request,'index.html',{'profile':profile,'posts':posts,'stories':story})
+    else: 
+        return redirect ('signin')
 def reels(request):
     profile = Profile.objects.get(user=request.user)
     reels = Reel.objects.all()
