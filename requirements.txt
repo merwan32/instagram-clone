@@ -3,3 +3,4 @@ Django
 Pillow==9.4.0
 sqlparse==0.4.3
 whitenoise==6.4.0
+gunicorn==20.1.0
